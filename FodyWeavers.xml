@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Weavers>
+  <Costura>
+    <IncludeAssemblies>
+      HtmlAgilityPack
+      EntityFramework
+      Microsoft.Data.ConnectionUI
+      Microsoft.Data.ConnectionUI.Dialog
+    </IncludeAssemblies>
+    
+  </Costura>
+</Weavers>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Wine">
+  <DataContextMoniker Name="/WineDataContext" />
+  <nestedChildShapes>
+    <classShape Id="442bb607-6195-44ea-a598-eaa45550b930" absoluteBounds="0.75, 5.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/WineDataContext/LB_Inventory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="12c3588f-b227-405c-80c6-8ff19e8b818c" absoluteBounds="0.765, 6.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cd3f6dd2-e1b3-4e88-9628-81aaafb13825" absoluteBounds="3.5, 1, 2, 1.3862939453125">
+      <DataClassMoniker Name="/WineDataContext/WTSO_Rating" />
+      <nestedChildShapes>
+        <elementListCompartment Id="527f91e2-339d-469b-a9c5-49d21998c96b" absoluteBounds="3.515, 1.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a8911375-f54b-4dd1-8980-1a3a6986cca6" absoluteBounds="3.5, 3.125, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/WineDataContext/WTSO_History" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0a5831de-e7d7-421b-b4b8-ad29f6bfb697" absoluteBounds="3.515, 3.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="174932bf-24f9-4b05-b334-a0a7ff72929a" absoluteBounds="0.75, 1.25, 2, 3.5016097005208331">
+      <DataClassMoniker Name="/WineDataContext/WTSO_Inventory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2d577f8c-74aa-4486-8dbe-62379eb396e2" absoluteBounds="0.765, 1.71, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.81814697265625); (3.5 : 1.81814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WineDataContext/WTSO_Inventory/WTSO_Inventory_WTSO_Rating" />
+      <nodes>
+        <classShapeMoniker Id="174932bf-24f9-4b05-b334-a0a7ff72929a" />
+        <classShapeMoniker Id="cd3f6dd2-e1b3-4e88-9628-81aaafb13825" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 3.93830485026042); (3.5 : 3.93830485026042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WineDataContext/WTSO_Inventory/WTSO_Inventory_WTSO_History" />
+      <nodes>
+        <classShapeMoniker Id="174932bf-24f9-4b05-b334-a0a7ff72929a" />
+        <classShapeMoniker Id="a8911375-f54b-4dd1-8980-1a3a6986cca6" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

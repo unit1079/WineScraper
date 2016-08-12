@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Wine" EntityNamespace="WineScraper.Data" ContextNamespace="WineScraper.Data" Class="WineDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Wine;Persist Security Info=True;User ID=sa" SettingsObjectName="WineScraper.Properties.Settings" SettingsPropertyName="WineConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.LB_Inventory" Member="LB_Inventories">
+    <Type Name="LB_Inventory">
+      <Column Name="lbid" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Date_last_seen" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Picture_Url" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WTSO_Rating" Member="WTSO_Ratings">
+    <Type Name="WTSO_Rating">
+      <Column Name="RatingID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rating" Type="System.String" DbType="NVarChar(300) NOT NULL" CanBeNull="false" />
+      <Association Name="WTSO_Inventory_WTSO_Rating" Member="WTSO_Inventory" ThisKey="ProductID" OtherKey="ProductID" Type="WTSO_Inventory" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WTSO_History" Member="WTSO_Histories">
+    <Type Name="WTSO_History">
+      <Column Name="HistoryID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="ShippingOffer" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="OfferDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="WTSO_Inventory_WTSO_History" Member="WTSO_Inventory" ThisKey="ProductID" OtherKey="ProductID" Type="WTSO_Inventory" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WTSO_Inventory" Member="WTSO_Inventories">
+    <Type Name="WTSO_Inventory">
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Picture_Url" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="UnitSize" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Varietal" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Vintage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Grape" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Region" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Appellation" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ABV" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FullDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="WTSOMemberRating" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="WTSO_Inventory_WTSO_Rating" Member="WTSO_Ratings" ThisKey="ProductID" OtherKey="ProductID" Type="WTSO_Rating" />
+      <Association Name="WTSO_Inventory_WTSO_History" Member="WTSO_Histories" ThisKey="ProductID" OtherKey="ProductID" Type="WTSO_History" />
+    </Type>
+  </Table>
+</Database>
