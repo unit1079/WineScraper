@@ -99,6 +99,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Wine.dbml</DependentUpon>
     </Compile>
+    <Compile Include="WineScraper.Data\WineDataContext.cs" />
     <Compile Include="WineScraper.Data\WTSO_Inventory.cs" />
     <Compile Include="WineScraper.GUI\DataConnection\DataConnectionConfiguration.cs" />
     <Compile Include="WineScraper.GUI\DataConnection\IDataConnectionConfiguration.cs" />
@@ -138,8 +139,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="app.config" />
-    <None Include="packages.config" />
+    <None Include="app.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="connection.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

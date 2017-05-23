@@ -385,7 +385,7 @@ namespace WineScraper.Web
                 var prodID = GetValueFromXpath(oDoc, "LB_XP_ProductID");
                 if (prodID != null) // TODO - do something here, this would break everything
                 {
-                    using (var oContext = new WineDataContext())
+                    using (var oContext = WineDataContext.GetNewContextFromConfigFile())
                     {
                         var oLBItem = oContext.LB_Inventories.SingleOrDefault(x => x.lbid == prodID);
                         if (oLBItem == null)
@@ -407,7 +407,8 @@ namespace WineScraper.Web
                         {
                             oLBItem.Price = iPrice;
                         }
-                        oLBItem.Picture_Url = strPictureUrl;
+                        oLBItem.Picture_Url = (strPictureUrl.Contains("//") ? strPictureUrl :
+                            string.Format("{0}{1}", ConfigurationManager.AppSettings["LB_URL"].ToString(), strPictureUrl.Replace("https:","")));
                         if (string.IsNullOrEmpty(oLBItem.Description) || strDescription.Length > 0 )
                         {
                             oLBItem.Description = strDescription;
@@ -507,7 +508,7 @@ namespace WineScraper.Web
                 int iProdID = 0;
                 if (int.TryParse(GetValueFromXpath(oDoc, "WTSO_XP_ProductID"), out iProdID))
                 {
-                    using (var oContext = new WineDataContext())
+                    using (var oContext = WineDataContext.GetNewContextFromConfigFile())
                     {
                         var oWTSOItem = oContext.WTSO_Inventories.SingleOrDefault(x => x.ProductID == iProdID );
                         if (oWTSOItem == null)
@@ -704,7 +705,7 @@ namespace WineScraper.Web
             var strTitle = GetValueFromXpath(oDoc, "WTSO_XP_CD_Title");
             if( strTitle != null && strTitle.Trim().Length > 0 )
             {
-                using (var oContext = new WineDataContext())
+                using (var oContext = WineDataContext.GetNewContextFromConfigFile())
                 {
                     var oWTSOItem = oContext.WTSO_Inventories.SingleOrDefault(x => x.ProductID == iProductID );
                     if (oWTSOItem == null)

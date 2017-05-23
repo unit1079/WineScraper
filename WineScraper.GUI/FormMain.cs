@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Data.Entity;
 using System.Data.Linq;
 using System.Drawing;
 using System.Linq;
@@ -529,6 +530,14 @@ namespace WineScraper.GUI
         {
             string strConnectString;
             var bConnection = TryGetDataConnectionStringFromUser(out strConnectString);
+            if (bConnection)
+            {
+                var oContext = new WineDataContext(strConnectString);
+                if (oContext.DatabaseExists())
+                {
+                    
+                }
+            }
         }
 
         [STAThread]
